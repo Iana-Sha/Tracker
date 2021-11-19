@@ -4,10 +4,11 @@
              x:Class="Tracker.MainPage">
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <Image Source="emergency_vet.png"/>
             <Label Text="Live Information" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large"/>
-            <Label Text="(With delay)" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large"/>
+            <Label x:Name ="warning" Text="(With delay)" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Small"/>
             <Grid Padding="10" RowDefinitions="Auto, 20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -27,6 +28,7 @@
             </Grid>
             <Button Text="REFRESH" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Button_Clicked"/>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 
 </ContentPage>
