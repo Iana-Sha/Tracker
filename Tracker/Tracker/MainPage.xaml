@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tracker.MainPage">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Image Source="emergency_vet.png"/>
+            <Label Text="Live Information" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large"/>
+            <Label Text="(With delay)" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large"/>
+            <Grid Padding="10" RowDefinitions="Auto, 20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="Update Time: " FontSize="Medium"/>
+                <Label x:Name="xtime" Grid.Row="0" Grid.Column="1" Text="" FontSize="Medium"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Temperature: " FontSize="Medium"/>
+                <Label x:Name="xtemp" Grid.Row="1" Grid.Column="1" Text="" FontSize="Medium"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Humidity: " FontSize="Medium"/>
+                <Label x:Name="xhum" Grid.Row="2" Grid.Column="1" Text="" FontSize="Medium"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Fan Status: " FontSize="Medium"/>
+                <Label x:Name="xfanStatus" Grid.Row="3" Grid.Column="1" Text="" FontSize="Medium"/>
+            </Grid>
+            <Button Text="REFRESH" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
