@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tracker.HistoryRecords">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="History of Records" VerticalOptions="Center" TextColor="Black" HorizontalOptions="Center" FontSize="Large"/>
+                <Label x:Name="warning" Text="With delay" VerticalOptions="Center"  TextColor="Black" HorizontalOptions="Center" FontSize="Small"/>
+                <Button x:Name="Refresh" Text="REFRESH" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Refresh_Clicked"/>
+                <Button x:Name="Chart" Text="CHART" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Chart_Clicked"/>
+                <Grid Padding="10" RowDefinitions="Auto, 20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Update Time" TextColor="Black" FontSize="Small"/>
+                    
+
+                    <Label Grid.Row="0" Grid.Column="1" Text="Temperature" TextColor="Black" FontSize="Small"/>
+                    
+
+                    <Label Grid.Row="0" Grid.Column="2" Text="Humidity" TextColor="Black" FontSize="Small"/>
+                    
+
+                    <Label Grid.Row="0" Grid.Column="3" Text="Fan Status" TextColor="Black" FontSize="Small"/>
+                    
+                </Grid>
+                <CollectionView x:Name="collectionView" ItemsSource="{Binding records}" SelectionChanged="collectionView_SelectionChanged" SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout>
+                                <Grid Padding="10" RowDefinitions="Auto, 20" ColumnDefinitions="Auto">
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding dateTime}" FontSize="Small"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Temp}" FontSize="Small"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Hum}" FontSize="Small"/>
+                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding FanOn}" FontSize="Small"/>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

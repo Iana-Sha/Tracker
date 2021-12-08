@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tracker.Chart">
+    <ContentPage.Content>
+        <chart:SfChart>
+            <chart:SfChart.Title>
+                <chart:ChartTitle Text="Status by time"/>
+            </chart:SfChart.Title>
+            <chart:SfChart.PrimaryAxis>
+                <chart:CategoryAxis/>
+            </chart:SfChart.PrimaryAxis>
+            <chart:SfChart.SecondaryAxis>
+                <chart:NumericalAxis/>
+            </chart:SfChart.SecondaryAxis>
+            <chart:LineSeries ItemsSource="{Binding records}" XBindingPath="dateTime" YBindingPath="Temp">
+
+                <chart:LineSeries.ColorModel>
+
+                    <chart:ChartColorModel Palette="Custom">
+                        <chart:ChartColorModel.CustomBrushes>
+                            <Color>#CD6785</Color>
+                        </chart:ChartColorModel.CustomBrushes>
+                    </chart:ChartColorModel>
+                </chart:LineSeries.ColorModel>
+            </chart:LineSeries>
+        </chart:SfChart>
+    </ContentPage.Content>
+</ContentPage>
