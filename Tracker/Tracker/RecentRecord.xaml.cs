@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +16,12 @@ namespace Tracker
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RecentRecord : ContentPage
     {
-        Record r;
-        public RecentRecord()
+        //Record r;
+        string token;
+        public RecentRecord(string response)
         {
             InitializeComponent();
-
+            token = response;
             changeToMostRecentRecord();
         }
 
@@ -29,29 +32,25 @@ namespace Tracker
 
         private async void changeToMostRecentRecord()
         {
+            var client = new RestClient("https://louenes099.pythonanywhere.com/pi/api/get/last");
+            client.Timeout = -1;
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("x-access-tokens", token);
+            IRestResponse response = client.Execute(request);
 
-            string url = "https://louenes099.pythonanywhere.com/pi/api/get/last";
-            var handler = new HttpClientHandler();
-            HttpClient client = new HttpClient(handler);
-            string result = await client.GetStringAsync(url);
 
-            Console.WriteLine(result);
-            var resultsObject = JArray.Parse(result);
+            var record = response.Content;
+            Console.WriteLine(record);
+            var resultsObject = JArray.Parse(record);
 
-            Console.WriteLine(resultsObject);
-
-            int id = resultsObject[0][0].ToObject<int>();
-            string time = resultsObject[0][1].ToString();
-            double temp = resultsObject[0][2].ToObject<double>();
-            double hum = resultsObject[0][3].ToObject<double>();
-
-            r = new Record(id, time, temp, hum);
             try
             {
-                xtime.Text = r.dateTime;
-                xtemp.Text = r.Temp.ToString() + "°C";
-                xhum.Text = r.Hum.ToString() + "%";
-                xfanStatus.Text = r.FanOn == true ? "On" : "Off";
+                var r = JsonConvert.DeserializeObject<List<Record>>(record);
+
+                xtime.Text = r[0].time;
+                xtemp.Text = r[0].temp.ToString() + "°C";
+                xhum.Text = r[0].hum.ToString() + "%";
+                xfanStatus.Text = r[0].FanOn == true ? "On" : "Off";
             }
             catch (Exception e)
             {

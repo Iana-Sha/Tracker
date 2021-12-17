@@ -2,31 +2,31 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Tracker.Chart">
+             x:Class="Tracker.HumidityChart">
     <ContentPage.Content>
         <chart:SfChart>
             <chart:SfChart.Title>
-                <chart:ChartTitle Text="Temperature Progression" FontSize="Large"/>
+                <chart:ChartTitle Text="Humidity Progression" FontSize="Large"/>
             </chart:SfChart.Title>
-            
+
             <chart:SfChart.PrimaryAxis>
                 <chart:CategoryAxis/>
             </chart:SfChart.PrimaryAxis>
-            
+
             <chart:SfChart.SecondaryAxis>
                 <chart:NumericalAxis/>
             </chart:SfChart.SecondaryAxis>
-            
-            <chart:LineSeries ItemsSource="{Binding records}" XBindingPath="time" YBindingPath="temp">
+
+            <chart:LineSeries ItemsSource="{Binding records}" XBindingPath="time" YBindingPath="hum">
                 <chart:LineSeries.ColorModel>
                     <chart:ChartColorModel Palette="Custom">
                         <chart:ChartColorModel.CustomBrushes>
-                            <Color>#CD6785</Color>
+                            <Color>#4C97D9</Color>
                         </chart:ChartColorModel.CustomBrushes>
                     </chart:ChartColorModel>
                 </chart:LineSeries.ColorModel>
             </chart:LineSeries>
-            
+
         </chart:SfChart>
     </ContentPage.Content>
 </ContentPage>

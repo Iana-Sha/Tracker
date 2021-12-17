@@ -5,38 +5,41 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="History of Records" VerticalOptions="Center" TextColor="Black" HorizontalOptions="Center" FontSize="Large"/>
-                <Label x:Name="warning" Text="With delay" VerticalOptions="Center"  TextColor="Black" HorizontalOptions="Center" FontSize="Small"/>
-                <Button x:Name="Refresh" Text="REFRESH" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Refresh_Clicked"/>
-                <Button x:Name="Chart" Text="CHART" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large" Clicked="Chart_Clicked"/>
-                <Grid Padding="10" RowDefinitions="Auto, 20">
+                <Label Text="History of Records" VerticalOptions="Center" TextColor="Black" HeightRequest="30" HorizontalOptions="Center" FontSize="Large"/>
+                <Label x:Name="warning" Text="With delay" VerticalOptions="Center" HeightRequest="30" TextColor="Black" HorizontalOptions="Center" FontSize="Small"/>
+                <Entry x:Name="startBoundary" HeightRequest="50" Placeholder="Biginning Record"/>
+                <Entry x:Name="finishBoundary" HeightRequest="50" Placeholder="Last Record"/>
+                <Button x:Name="Refresh" Text="REFRESH" Margin="5, 5, 5, 5" TextColor="White" BackgroundColor="Orange" HeightRequest="50" FontSize="Large" Clicked="Refresh_Clicked"/>
+                <Button x:Name="Chart" Text="TEMPERATURE CHART" Margin="5, 0, 5, 5" TextColor="White" BackgroundColor="Orange" HeightRequest="50" FontSize="Large" Clicked="Chart_Clicked"/>
+                <Button x:Name="HumChart" Text="HUMIDITY CHART" Margin="5, 0, 5, 5" TextColor="White" BackgroundColor="Orange" HeightRequest="50" FontSize="Large" Clicked="HumChart_Clicked"/>
+                <Grid Padding="10" RowDefinitions="Auto">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Update Time" TextColor="Black" FontSize="Small"/>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Update Time                                      " TextColor="Black" FontSize="Small"/>
+
+
+                    <Label Grid.Row="0" Grid.Column="1" Text="Temp°C" TextColor="Black" FontSize="Small"/>
                     
 
-                    <Label Grid.Row="0" Grid.Column="1" Text="Temperature" TextColor="Black" FontSize="Small"/>
+                    <Label Grid.Row="0" Grid.Column="2" Text="Hum(%)" TextColor="Black" FontSize="Small"/>
                     
 
-                    <Label Grid.Row="0" Grid.Column="2" Text="Humidity" TextColor="Black" FontSize="Small"/>
-                    
-
-                    <Label Grid.Row="0" Grid.Column="3" Text="Fan Status" TextColor="Black" FontSize="Small"/>
+                    <Label Grid.Row="0" Grid.Column="3" Text="Fan ON" TextColor="Black" FontSize="Small"/>
                     
                 </Grid>
                 <CollectionView x:Name="collectionView" ItemsSource="{Binding records}" SelectionChanged="collectionView_SelectionChanged" SelectionMode="Single">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout>
-                                <Grid Padding="10" RowDefinitions="Auto, 20" ColumnDefinitions="Auto">
-                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding dateTime}" FontSize="Small"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Temp}" FontSize="Small"/>
-                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding Hum}" FontSize="Small"/>
-                                    <Label Grid.Row="0" Grid.Column="3" Text="{Binding FanOn}" FontSize="Small"/>
+                                <Grid Padding="10" RowDefinitions="Auto" ColumnDefinitions="Auto">
+                                    <Label Grid.Row="0"  Grid.Column="0" Text="{Binding time}" FontSize="Small"/>
+                                    <Label Grid.Row="0" HorizontalOptions="Center" Grid.Column="1" Text="{Binding temp}" FontSize="Small"/>
+                                    <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="{Binding hum}" FontSize="Small"/>
+                                    <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="Center" Text="{Binding FanOn}" FontSize="Small"/>
                                 </Grid>
                             </StackLayout>
                         </DataTemplate>
