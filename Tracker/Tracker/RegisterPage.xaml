@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tracker.RegisterPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="Registration"
+                FontSize="48"
+                       TextColor="Black"
+                   Padding="0, 75, 0, 75"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"/>
+                <Entry x:Name="username"
+                 Placeholder="Username"
+                 FontSize="Large"
+                 />
+                
+                <Entry x:Name="password"
+                Placeholder="Password"
+                FontSize="Large"
+                IsPassword="True"
+                />
+                
+                <Button x:Name="btnRegister"
+                Text="Register"
+                        TextColor="White"
+                Font="large"
+                Margin="0, 75, 0, 0"
+                BackgroundColor="Orange"
+                        HeightRequest="75"
+                    Clicked="btnRegister_Clicked"
+                />
+                <Label x:Name="error" Text="" VerticalOptions="Center"  HorizontalOptions="Center" FontSize="Large"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

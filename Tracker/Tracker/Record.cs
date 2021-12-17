@@ -6,18 +6,20 @@ namespace Tracker
 {
     public class Record
     {
-        public int id { get; set; }
-        public string dateTime { get; set; }
-        public double Temp { get; set; }
-        public double Hum { get; set; }
+        //"[{\"hum\":43.0,\"id\":322,\"temp\":26.0,\"time\":\"Wed, 15 Dec 2021 22:07:53 GMT\"}]\n"
+        
+public int id { get; set; }
+        public string time { get; set; }
+        public double temp { get; set; }
+        public double hum { get; set; }
         public bool FanOn { get; set; }
 
-        public Record(int id, string dateTime, double temp, double hum)
+        public Record(double hum, int id, double temp, string dateTime)
         {
             this.id = id;
-            this.dateTime = dateTime;
-            Temp = temp;
-            Hum = hum;
+            this.time = dateTime;
+            this.temp = temp;
+            this.hum = hum;
             FanOn = false;
             if(temp > 25 || hum > 50)
             {

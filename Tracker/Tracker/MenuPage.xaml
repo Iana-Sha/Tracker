@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tracker.MenuPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                
+                <Button x:Name="recentRecord" Text="VIEW LAST RECORD" Margin="5, 10, 5, 5" TextColor="White" BackgroundColor="Orange" HeightRequest="75" FontSize="Large" Clicked="recentRecord_Clicked"/>
+                <Button x:Name="historyRecords" Text="VIEW HISTORY OF RECORDS" Margin="5, 0, 5, 5" TextColor="White" BackgroundColor="Orange" HeightRequest="75" FontSize="Large" Clicked="historyRecords_Clicked"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
